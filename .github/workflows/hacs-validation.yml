@@ -1,0 +1,35 @@
+name: HACS validation
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate hacs.json
+        run: |
+          if [ ! -f "custom_components/tauron_outage_notifier/hacs.json" ]; then
+            echo "hacs.json not found!"
+            exit 1
+          fi
+          echo "hacs.json validated"
+
+      - name: Validate manifest.json
+        run: |
+          if [ ! -f "custom_components/tauron_outage_notifier/manifest.json" ]; then
+            echo "manifest.json not found!"
+            exit 1
+          fi
+          echo "manifest.json validated"
+
+      - name: Validate Python syntax
+        run: |
+          for f in custom_components/tauron_outage_notifier/*.py; do
+            python3 -m py_compile "$f" && echo "$f OK"
+          done
