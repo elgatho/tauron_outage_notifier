@@ -18,7 +18,7 @@ własne powiadomienia bez pisania szablonów.
 ### HACS (zalecane)
 
 1. HACS → **Integracje** → menu (⋮) → **Repozytoria niestandardowe**
-2. URL: `https://github.com/Eales/tauron-outage-notifier`, kategoria: **Integracja**
+2. URL: `https://github.com/elgatho/tauron-outage-notifier`, kategoria: **Integracja**
 3. Zainstaluj **Tauron Outage Notifier**, a następnie zrestartuj Home Assistant
 
 ### Ręcznie

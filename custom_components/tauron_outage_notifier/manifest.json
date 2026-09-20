@@ -1,14 +1,1 @@
-{
-  "domain": "tauron_outage_notifier",
-  "name": "Tauron Outage Notifier",
-  "codeowners": ["@Eales"],
-  "config_flow": true,
-  "dependencies": [],
-  "documentation": "https://github.com/Eales/tauron-outage-notifier",
-  "integration_type": "service",
-  "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/Eales/tauron-outage-notifier/issues",
-  "requirements": [],
-  "version": "0.3.1",
-  "homeassistant": "2024.11.0"
-}
+{"domain": "tauron_outage_notifier", "name": "Tauron Outage Notifier", "codeowners": ["@elgatho"], "config_flow": true, "dependencies": [], "documentation": "https://github.com/elgatho/tauron-outage-notifier", "integration_type": "service", "iot_class": "cloud_polling", "issue_tracker": "https://github.com/elgatho/tauron-outage-notifier/issues", "requirements": [], "version": "0.3.1", "homeassistant": "2024.11.0"}
