@@ -36,11 +36,11 @@ def _parse_date(value: str | None) -> Any:
 def parse_outages(raw: dict[str, Any], street_name: str | None = None) -> list[dict[str, Any]]:
     """Normalise the API payload into a sorted list of outages.
 
-    Only outages whose 'lokalizacja' field contains the given street name are kept.
+    Only outages whose 'Message' field contains the given street name are kept.
     """
     outages = []
     for item in raw.get("OutageItems") or []:
-        lokalizacja = item.get("lokalizacja", "")
+        lokalizacja = item.get("Message", "")
         if street_name and isinstance(lokalizacja, str):
             if street_name.strip().lower() not in lokalizacja.strip().lower():
                 continue
