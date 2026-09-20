@@ -15,6 +15,7 @@ from .api import TauronApi, TauronApiError
 from .const import (
     CONF_CITY_GAID,
     CONF_HOUSE_NO,
+    CONF_STREET_NAME,
     CONF_SCAN_INTERVAL,
     CONF_STREET_GAID,
     DEFAULT_SCAN_INTERVAL,
@@ -32,15 +33,18 @@ def _parse_date(value: str | None) -> Any:
     return dt_util.parse_datetime(value)
 
 
-def parse_outages(raw: dict[str, Any]) -> list[dict[str, Any]]:
+def parse_outages(raw: dict[str, Any], street_name: str | None = None) -> list[dict[str, Any]]:
     """Normalise the API payload into a sorted list of outages.
 
-    Outages whose 'lokalizacja' field starts with 'ul.' are excluded.
+    Only outages whose 'lokalizacja' field contains the given street name are kept.
     """
     outages = []
     for item in raw.get("OutageItems") or []:
         lokalizacja = item.get("lokalizacja", "")
-        if isinstance(lokalizacja, str) and lokalizacja.strip().lower().startswith("ul."):
+        if street_name and isinstance(lokalizacja, str):
+            if street_name.strip().lower() not in lokalizacja.strip().lower():
+                continue
+        elif street_name:
             continue
         start = _parse_date(item.get("StartDate"))
         end = _parse_date(item.get("EndDate"))
@@ -89,7 +93,7 @@ class TauronOutageCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         except TauronApiError as err:
             raise UpdateFailed(str(err)) from err
 
-        outages = parse_outages(raw)
+        outages = parse_outages(raw, self.entry.data[CONF_STREET_NAME])
 
         current = next(
             (o for o in outages if o["start"] and o["end"] and o["start"] <= now <= o["end"]),
@@ -126,4 +130,4 @@ class TauronOutageCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             )
         except TauronApiError as err:
             raise UpdateFailed(str(err)) from err
-        return parse_outages(raw)
+        return parse_outages(raw, self.entry.data[CONF_STREET_NAME])
