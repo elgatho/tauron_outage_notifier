@@ -1,0 +1,33 @@
+name: Feature Request
+description: Zaproponuj nową funkcję dla Tauron Outage Notifier
+title: "[FEATURE]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      description: |
+        Upewnij się, że propozycja nie została już zaimplementowana lub zgłoszona.
+  - type: textarea
+    id: description
+    attributes:
+      label: Opis funkcji
+      description: Opisz proponowaną funkcję
+      placeholder: "Chciałbym aby integracja wysyłała powiadomienie na telefon..."
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Dlaczego?
+      description: Co tego motywuje?
+      placeholder: "Obecne metody nie dają wystarczającej kontroli..."
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatywy
+      description: Jakie inne rozwiązania rozważałeś?
+  - type: textarea
+    id: additional
+    attributes:
+      label: Dodatkowe informacje
+      description: Dowolne inne informacje

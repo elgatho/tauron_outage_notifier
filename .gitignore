@@ -1,0 +1,101 @@
+# Tauron Outage Notifier - .gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Test
+.pytest_cache/
+.coverage
+htmlcov/
+
+# HA specific
+*.code-workspace
+.vscode/settings.json
+
+# GitHub
+*.github/workflows/*.log
+
+# IDE override
+*.swp
+*.swo
+*~
+
+# OS specific
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Python specific
+*.pyc
+__pycache__/
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+
+# Optional
+.claude/
+.opencode/

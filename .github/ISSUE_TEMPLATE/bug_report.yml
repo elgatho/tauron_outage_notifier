@@ -1,0 +1,49 @@
+name: Bug Report
+description: Zgłoś błąd w integracji Tauron Outage Notifier
+title: "[BUG]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      description: |
+        Upewnij się, że masz najnowszą wersję integracji przed zgłoszeniem błędu.
+  - type: textarea
+    id: description
+    attributes:
+      label: Opis błędu
+      description: Co się stało?
+      placeholder: "Wyłączenie nie pojawia się w kalendarzu mimo że jest aktywne..."
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Jak odtworzyć problem
+      description: Kroki do odtworzenia
+      placeholder: |
+        1. Dodaj integrację dla adresu ul. Przykładowa 1
+        2. Odczekaj pełny cykl odpytywania
+        3. Sprawdź kalendarz
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Wersja Home Assistant
+      description: Na przykład: 2024.12.1
+      placeholder: "2024.12.1"
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logi błędów
+      description: |
+        Wklej logi z Home Assistant (Ustawienia → System → Logi)
+      placeholder: |
+        2025-01-01 00:00:00 error - ...
+  - type: textarea
+    id: additional
+    attributes:
+      label: Dodatkowe informacje
+      description: Dowolne inne informacje mogą pomóc w diagnostyce
